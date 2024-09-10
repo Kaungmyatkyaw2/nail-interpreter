@@ -8,7 +8,7 @@ type Node interface {
 
 type Statement interface {
 	Node
-	statementNdoe()
+	statementNode()
 }
 
 type Expression interface {
@@ -34,7 +34,7 @@ type LetStatement struct {
 	Value Expression
 }
 
-func (ls *LetStatement) statementNdoe() {
+func (ls *LetStatement) statementNode() {
 
 }
 
@@ -53,4 +53,15 @@ func (i *Identifier) expressionNode() {
 
 func (i *Identifier) TokenLiteral() string {
 	return i.Token.Literal
+}
+
+type ReturnStatement struct {
+	Token       token.Token
+	ReturnValue Expression
+}
+
+func (rs *ReturnStatement) statementNode() {}
+
+func (rs ReturnStatement) TokenLiteral() string {
+	return rs.Token.Literal
 }
